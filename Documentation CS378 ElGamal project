@@ -1,0 +1,52 @@
+Documentation CS378 ElGamal project	
+author: Shui Ki Cheung 
+
+purpose: trying to execute Elgamal encryption over a small amout of text and decrypt to prove the program work. 
+This program make use of the GMP library 
+this program will find n bit prime and primitive root of the prime. 
+generate public key and private key for encryption and decryption 
+Then use ElGamal method to encrypt and decrpty the message
+
+for each character, there can be a representation of an integer less than 256
+so the program will read each character into a string of character 
+then will read all the character into integer value and store in the z which is a very large integer
+
+main function in the program 
+
+modularexpon
+input a, k, m it will set the l to be the value of a^k mod m
+it use memory efficient method so it is quick  
+
+primenoandroot
+take in the input of no. of n bit and t as the desired confidence 
+it make use of the library function from GMP 
+it will random generate a n bit no. 
+then it will find the next prime by using function from GMP 
+after finding the prime 
+the primitive root g 
+will make use of the g^p-1 = 1 mod p 
+it will test the g using the mpz_powm_sec from GMP 
+
+publicandprivatekey
+
+using the random function from gmp  and generate x less than p and compute h 
+then output the k1 key and k2 key to k1.txt and k2.txt
+
+encoding
+encoding the message from message.txt with 
+z0 = m0 + m1x + m2x^2 +.... m24x^24
+
+where x = 2^8 = 256
+
+for testing purpose i have set the k = 25 so k-1 = 24
+
+
+encryption 
+using the key from k1 and compute ci and di to get the cipher
+the cipher will output as cipher text
+
+decryption 
+using the key from k2 and compute zi
+still working on it , having trouble decoding the zi
+and for some reason, the z is not equal to the z from encoding 
+trying to figure out what's wrong in the progress 
